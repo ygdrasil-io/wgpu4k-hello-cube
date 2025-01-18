@@ -1,6 +1,6 @@
-import io.ygdrasil.wgpu.WGPU.Companion.loadLibrary
-import io.ygdrasil.wgpu.autoClosableContext
-import io.ygdrasil.wgpu.glfwContextRenderer
+import ffi.LibraryLoader
+import io.ygdrasil.webgpu.autoClosableContext
+import io.ygdrasil.webgpu.glfwContextRenderer
 import kotlinx.coroutines.runBlocking
 import org.lwjgl.glfw.GLFW.*
 
@@ -9,7 +9,7 @@ val UPDATE_INTERVAL = (1000.0 / 60.0).toInt()
 
 fun main() {
     runBlocking {
-        loadLibrary()
+        LibraryLoader.load()
         initLog()
         val glfwContext = glfwContextRenderer(
             width = 800,

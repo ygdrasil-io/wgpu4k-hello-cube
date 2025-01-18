@@ -1,8 +1,8 @@
 @file:OptIn(ExperimentalForeignApi::class)
 
-import io.ygdrasil.wgpu.AutoClosableContext
-import io.ygdrasil.wgpu.autoClosableContext
-import io.ygdrasil.wgpu.iosContextRenderer
+import io.ygdrasil.webgpu.AutoClosableContext
+import io.ygdrasil.webgpu.autoClosableContext
+import io.ygdrasil.webgpu.iosContextRenderer
 import kotlinx.cinterop.CValue
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.useContents

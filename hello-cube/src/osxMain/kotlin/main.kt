@@ -3,8 +3,8 @@
 import glfw.glfwPollEvents
 import glfw.glfwShowWindow
 import glfw.glfwWindowShouldClose
-import io.ygdrasil.wgpu.autoClosableContext
-import io.ygdrasil.wgpu.glfwContextRenderer
+import io.ygdrasil.webgpu.autoClosableContext
+import io.ygdrasil.webgpu.glfwContextRenderer
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.runBlocking
 

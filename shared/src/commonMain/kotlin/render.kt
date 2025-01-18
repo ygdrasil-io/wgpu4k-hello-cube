@@ -1,21 +1,21 @@
-import io.ygdrasil.wgpu.AutoClosableContext
-import io.ygdrasil.wgpu.CanvasConfiguration
-import io.ygdrasil.wgpu.CompositeAlphaMode
-import io.ygdrasil.wgpu.TextureUsage
-import io.ygdrasil.wgpu.WGPUContext
+import io.ygdrasil.webgpu.AutoClosableContext
+import io.ygdrasil.webgpu.CompositeAlphaMode
+import io.ygdrasil.webgpu.SurfaceConfiguration
+import io.ygdrasil.webgpu.TextureUsage
+import io.ygdrasil.webgpu.WGPUContext
 
 
 fun AutoClosableContext.createScene(context: WGPUContext): RotatingCubeScene {
 
-    val alphaMode = CompositeAlphaMode.inherit?.takeIf { context.surface.supportedAlphaMode.contains(it) }
-        ?: CompositeAlphaMode.opaque
+    val alphaMode = CompositeAlphaMode.Inherit?.takeIf { context.surface.supportedAlphaMode.contains(it) }
+        ?: CompositeAlphaMode.Opaque
 
     context.surface
         .configure(
-            CanvasConfiguration(
+            SurfaceConfiguration(
                 device = context.device,
                 format = context.renderingContext.textureFormat,
-                usage = setOf(TextureUsage.renderattachment),
+                usage = setOf(TextureUsage.RenderAttachment),
                 alphaMode = alphaMode
             )
         )

@@ -11,17 +11,14 @@ kotlin {
 	js { browser() }
 
 	jvm {
-		@OptIn(ExperimentalKotlinGradlePluginApi::class)
 		compilerOptions {
 			jvmTarget = JvmTarget.JVM_22
 		}
 	}
 
-	@OptIn(ExperimentalWasmDsl::class)
 	wasmJs { browser() }
 
 	androidTarget {
-		@OptIn(ExperimentalKotlinGradlePluginApi::class)
 		compilerOptions {
 			jvmTarget = JvmTarget.JVM_22
 		}
@@ -44,7 +41,6 @@ kotlin {
 		}
 	}
 
-	@OptIn(ExperimentalKotlinGradlePluginApi::class)
 	compilerOptions {
 		allWarningsAsErrors = true
 	}

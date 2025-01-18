@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -8,7 +7,6 @@ plugins {
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget = JvmTarget.JVM_22
         }
@@ -26,7 +24,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "io.ygdrasil.wgpu"
+        applicationId = "io.ygdrasil.webgpu"
 
         minSdk = 28
         targetSdk = 35
@@ -58,7 +56,7 @@ android {
         }
 
     }
-    namespace = "io.ygdrasil.wgpu"
+    namespace = "io.ygdrasil.webgpu"
 }
 
 java {
