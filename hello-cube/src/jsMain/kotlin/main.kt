@@ -1,6 +1,6 @@
-import io.ygdrasil.wgpu.AutoClosableContext
-import io.ygdrasil.wgpu.autoClosableContext
-import io.ygdrasil.wgpu.canvasContextRenderer
+import io.ygdrasil.webgpu.AutoClosableContext
+import io.ygdrasil.webgpu.autoClosableContext
+import io.ygdrasil.webgpu.canvasContextRenderer
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 

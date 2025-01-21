@@ -18,7 +18,7 @@
 		3A3532931E99974500C194AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A3532A41E99974500C194AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907FE32A28789CDAFD777257 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		C454F3E02C95DF0B00B694DC /* WgpuApp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WgpuApp.xcframework; path = build/XCFrameworks/release/WgpuApp.xcframework; sourceTree = "<group>"; };
+		C454F3E02C95DF0B00B694DC /* WgpuApp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WgpuApp.xcframework; path = build/XCFrameworks/release/WgpuApp.xcframework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

@@ -1,9 +1,9 @@
 object Cube {
 
-    val cubeVertexSize = 4L * 10L // Byte size of one cube vertex.
-    val cubePositionOffset = 0L
-    val cubeUVOffset = 4L * 8L
-    val cubeVertexCount = 36
+    val cubeVertexSize = 4uL * 10uL // Byte size of one cube vertex.
+    val cubePositionOffset = 0uL
+    val cubeUVOffset = 4uL * 8uL
+    val cubeVertexCount = 36u
 
     val cubeVertexArray = arrayOf(
         // float4 position, float4 color, float2 uv,
