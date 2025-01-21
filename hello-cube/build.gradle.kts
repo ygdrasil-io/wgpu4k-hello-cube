@@ -21,7 +21,6 @@ kotlin {
     jvm {
         // On to make "JavaExec" work, else we got SourceSet with name 'main' not found, see https://youtrack.jetbrains.com/issue/KT-42683
         withJava()
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget = JvmTarget.JVM_22
         }
@@ -45,7 +44,7 @@ kotlin {
             baseName = "WgpuApp"
             isStatic = true
             xcf.add(this)
-            binaryOption("bundleId", "io.ygdrasil.wgpu.$xcframeworkName")
+            binaryOption("bundleId", "io.ygdrasil.webgpu.$xcframeworkName")
         }
     }
 
