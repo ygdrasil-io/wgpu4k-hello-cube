@@ -1,10 +1,15 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+@file:OptIn(ExperimentalWasmDsl::class)
+
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 
 plugins {
-	alias(libs.plugins.kotlinMultiplatform)
-	alias(libs.plugins.androidLibrary)
+	id(libs.plugins.kotlin.multiplatform.get().pluginId)
+}
+
+if (useAndroid) {
+	apply(plugin = "android")
 }
 
 kotlin {
@@ -18,9 +23,11 @@ kotlin {
 
 	wasmJs { browser() }
 
-	androidTarget {
-		compilerOptions {
-			jvmTarget = JvmTarget.JVM_22
+	if (useAndroid) {
+		androidTarget {
+			compilerOptions {
+				jvmTarget = JvmTarget.JVM_22
+			}
 		}
 	}
 
@@ -45,17 +52,6 @@ kotlin {
 		allWarningsAsErrors = true
 	}
 }
-
-android {
-	namespace = "io.ygdrasil.shared"
-	compileSdk = 35
-
-	defaultConfig {
-		minSdk = 28
-	}
-
-}
-
 
 java {
 	toolchain {
