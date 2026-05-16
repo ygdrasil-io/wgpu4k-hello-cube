@@ -17,7 +17,7 @@ kotlin {
 
 	jvm {
 		compilerOptions {
-			jvmTarget = JvmTarget.JVM_22
+			jvmTarget = JvmTarget.JVM_25
 		}
 	}
 
@@ -26,7 +26,7 @@ kotlin {
 	if (useAndroid) {
 		androidTarget {
 			compilerOptions {
-				jvmTarget = JvmTarget.JVM_22
+				jvmTarget = JvmTarget.JVM_17
 			}
 		}
 	}
@@ -55,6 +55,6 @@ kotlin {
 
 java {
 	toolchain {
-		languageVersion.set(JavaLanguageVersion.of(22))
+		languageVersion.set(JavaLanguageVersion.of(25))
 	}
 }

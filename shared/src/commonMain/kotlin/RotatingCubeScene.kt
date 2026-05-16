@@ -3,6 +3,7 @@ import Cube.cubeUVOffset
 import Cube.cubeVertexArray
 import Cube.cubeVertexCount
 import Cube.cubeVertexSize
+import io.ygdrasil.webgpu.ArrayBuffer
 import io.ygdrasil.webgpu.AutoClosableContext
 import io.ygdrasil.webgpu.BindGroupDescriptor
 import io.ygdrasil.webgpu.BindGroupEntry
@@ -39,9 +40,7 @@ import io.ygdrasil.webgpu.VertexAttribute
 import io.ygdrasil.webgpu.VertexBufferLayout
 import io.ygdrasil.webgpu.VertexState
 import io.ygdrasil.webgpu.WGPUContext
-import io.ygdrasil.webgpu.asArraybuffer
 import io.ygdrasil.webgpu.beginRenderPass
-import io.ygdrasil.webgpu.writeInto
 import korlibs.math.geom.Angle
 import korlibs.math.geom.Matrix4
 import kotlin.math.PI
@@ -72,7 +71,7 @@ class RotatingCubeScene(val context: WGPUContext) : AutoCloseable {
                 TextureDescriptor(
                     size = Extent3D(1u, 1u),
                     format = GPUTextureFormat.Depth24Plus,
-                    usage = setOf(GPUTextureUsage.RenderAttachment),
+                    usage = GPUTextureUsage.RenderAttachment,
                 )
             ).also { with(autoClosableContext) { it.bind() } }
         }
@@ -81,13 +80,13 @@ class RotatingCubeScene(val context: WGPUContext) : AutoCloseable {
         verticesBuffer = device.createBuffer(
             BufferDescriptor(
                 size = (cubeVertexArray.size * Float.SIZE_BYTES).toULong(),
-                usage = setOf(GPUBufferUsage.Vertex),
+                usage = GPUBufferUsage.Vertex,
                 mappedAtCreation = true
             )
         ).bind()
 
-        cubeVertexArray
-            .writeInto(verticesBuffer.getMappedRange())
+        verticesBuffer.getMappedRange()
+            .setFloats(0u, cubeVertexArray)
         verticesBuffer.unmap()
 
         renderPipeline = device.createRenderPipeline(
@@ -150,7 +149,7 @@ class RotatingCubeScene(val context: WGPUContext) : AutoCloseable {
             TextureDescriptor(
                 size = Extent3D(renderingContext.width, renderingContext.height),
                 format = GPUTextureFormat.Depth24Plus,
-                usage = setOf(GPUTextureUsage.RenderAttachment),
+                usage = GPUTextureUsage.RenderAttachment,
             )
         ).bind()
 
@@ -158,7 +157,7 @@ class RotatingCubeScene(val context: WGPUContext) : AutoCloseable {
         uniformBuffer = device.createBuffer(
             BufferDescriptor(
                 size = uniformBufferSize,
-                usage = setOf(GPUBufferUsage.Uniform, GPUBufferUsage.CopyDst)
+                usage = GPUBufferUsage.Uniform or GPUBufferUsage.CopyDst
             )
         ).bind()
 
@@ -206,13 +205,11 @@ class RotatingCubeScene(val context: WGPUContext) : AutoCloseable {
             projectionMatrix
         )
 
-        transformationMatrix.asArraybuffer {
-            device.queue.writeBuffer(
-                uniformBuffer,
-                0u,
-                it
-            )
-        }
+        device.queue.writeBuffer(
+            uniformBuffer,
+            0u,
+            ArrayBuffer.of(transformationMatrix)
+        )
 
         renderPassDescriptor = renderPassDescriptor.copy(
             colorAttachments = listOf(

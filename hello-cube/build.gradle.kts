@@ -7,7 +7,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(22))
+        languageVersion.set(JavaLanguageVersion.of(25))
     }
 }
 
@@ -19,9 +19,8 @@ kotlin {
 
     jvm {
         // On to make "JavaExec" work, else we got SourceSet with name 'main' not found, see https://youtrack.jetbrains.com/issue/KT-42683
-        withJava()
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_22
+            jvmTarget = JvmTarget.JVM_25
         }
     }
 
@@ -126,10 +125,10 @@ tasks.register<JavaExec>("runJvm") {
             "--enable-native-access=ALL-UNNAMED"
         )
     }
-    classpath = sourceSets["main"].runtimeClasspath
+    classpath = sourceSets["jvmMain"].runtimeClasspath
 
     javaLauncher = javaToolchains.launcherFor {
-        languageVersion = JavaLanguageVersion.of(22)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 

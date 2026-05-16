@@ -4,7 +4,7 @@ Minimal project to show how to use wgpu4k
 
 ## Prerequisites
 
-- JDK 22-24
+- JDK 25 or higher.
 - A recent version of Chrome or Firefox Nightly for web browser execution. Check compatibility [here][chart].
 
 ## How to Run the Project

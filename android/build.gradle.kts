@@ -8,7 +8,7 @@ plugins {
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_22
+            jvmTarget = JvmTarget.JVM_17
         }
     }
 
@@ -61,7 +61,7 @@ android {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(22))
+        languageVersion.set(JavaLanguageVersion.of(25))
     }
 }
 
